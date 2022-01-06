@@ -1,0 +1,5 @@
+Matricula.create!(valor_total_curso: 1500, quantidade_faturas: 3, dia_venc_fatura: 31, nome_curso: "Biomedicina", instituicao_id: 1, aluno_id: 1)
+Aluno.create!(nome: "Rafaela", cpf: "49295441818", data_nascimento: Date.parse("11/05/2001"), telefone: "12981195043", genero: "F", meio_pagamento: "Boleto")
+Instituicao.create!(nome_instituicao: "UNIP", cnpj: "45445567890234", tipo: "Universidade")
+Matricula.last.faturas
+Fatura(id: integer, valor_fatura: float, data_vencimento: date, matricula_id: integer, status: string)
