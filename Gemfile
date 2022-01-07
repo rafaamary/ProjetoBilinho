@@ -43,3 +43,4 @@ group :development do
   gem 'faker'
 end
 gem 'pry-rails'
+gem 'rubocop', require: false

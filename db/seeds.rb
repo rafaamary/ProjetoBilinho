@@ -5,22 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-10.times do 
-    Aluno.create({
-        nome: Faker::Name.name_with_middle,
-        cpf: Faker::Number.number(digits: 11),
-        data_nascimento: Faker::Date.birthday(min_age: 17, max_age: 80),
-        telefone: Faker::Number.number(digits: 11),
-        genero: %w(M F).sample,
-        meio_pagamento: %w(Boleto Cartao).sample
-    })    
+
+# cria 10 alunos
+10.times do
+  Aluno.create({
+                 nome: Faker::Name.name_with_middle,
+                 cpf: Faker::Number.number(digits: 11),
+                 data_nascimento: Faker::Date.birthday(min_age: 17, max_age: 80),
+                 telefone: Faker::Number.number(digits: 11),
+                 genero: %w[M F].sample,
+                 meio_pagamento: %w[Boleto Cartão].sample
+               })
 end
 
+# cria 10 instituições
 10.times do
-    tipo_instituicao = %w(Universidade Escola Creche).sample
-    Instituicao.create({
-        nome_instituicao: "#{tipo_instituicao} #{Faker::University.name}",
-        cnpj: Faker::Number.number(digits: 14),
-        tipo: tipo_instituicao
-    })
+  tipo_instituicao = %w[Universidade Escola Creche].sample
+  Instituicao.create({
+                       nome_instituicao: "#{tipo_instituicao} #{Faker::University.name}",
+                       cnpj: Faker::Number.number(digits: 14),
+                       tipo: tipo_instituicao
+                     })
 end
