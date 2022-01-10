@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # cria 10 alunos
-10.times do
+5.times do
   Aluno.create({
                  nome: Faker::Name.name_with_middle,
                  cpf: Faker::Number.number(digits: 11),
@@ -19,7 +19,7 @@
 end
 
 # cria 10 instituições
-10.times do
+5.times do
   tipo_instituicao = %w[Universidade Escola Creche].sample
   Instituicao.create({
                        nome_instituicao: "#{tipo_instituicao} #{Faker::University.name}",
