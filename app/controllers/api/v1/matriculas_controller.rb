@@ -10,7 +10,7 @@ module Api
 
       # Listar matricula passando ID
       def show
-        matricula = Matricula.find(params[:id_matricula])
+        matricula = Matricula.find(params[:id])
         render json: { status: 'Matrícula Carregada!', message: 'Matrícula Carregada!', data: matricula },
                status: :ok
       end
@@ -34,6 +34,16 @@ module Api
         render json: { status: 'Matricula Deletada!', message: 'Matricula Deletada!', data: matricula },
                status: :ok
       end
+
+      # Atualizar uma Matricula
+			def update
+				matricula = Matricula.find(params[:id])
+				if matricula.update(matricula_params)
+					render json: {status: 'SUCCESS', message:'Matricula Atualizada!', data:matricula},status: :ok
+        else
+					render json: {status: 'ERROR', message:'Matricula não Atualizada!', data:matricula.errors}, status: :unprocessable_entity
+				end
+			end
 
       # Parametros aceitos
       private

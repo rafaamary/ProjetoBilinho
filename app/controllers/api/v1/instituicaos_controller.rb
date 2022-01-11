@@ -10,7 +10,7 @@ module Api
 
       # Listar instituição passando ID
       def show
-        instituicao = Instituicao.find(params[:instituicao_id])
+        instituicao = Instituicao.find(params[:id])
         render json: { status: 'Instituição Carregado!', message: 'Instituição Carregado!', data: instituicao },
                status: :ok
       end
@@ -34,6 +34,16 @@ module Api
         render json: { status: 'Instituição Deletada!', message: 'Instituição Deletada!', data: instituicao },
                status: :ok
       end
+
+      # Atualizar uma Instituição
+			def update
+				instituicao = Instituicao.find(params[:id])
+				if instituicao.update(instituicao_params)
+					render json: {status: 'SUCCESS', message:'Instituição Atualizada!', data:instituicao},status: :ok
+        else
+					render json: {status: 'ERROR', message:'Instituição não Atualizada!', data:instituicao.errors}, status: :unprocessable_entity
+				end
+			end
 
       # Parametros aceitos
       private

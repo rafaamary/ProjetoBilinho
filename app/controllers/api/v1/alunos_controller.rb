@@ -9,7 +9,7 @@ module Api
 
       # Listar aluno passando ID
       def show
-        aluno = Aluno.find(params[:aluno_id])
+        aluno = Aluno.find(params[:id])
         render json: { status: 'Aluno Carregado!', message: 'Aluno Carregado!', data: aluno }, status: :ok
       end
 
@@ -29,6 +29,16 @@ module Api
         aluno.destroy
         render json: { status: 'Aluno Deletado!', message: 'Aluno Deletado!', data: aluno }, status: :ok
       end
+
+      # Atualizar um Aluno
+			def update
+				aluno = Aluno.find(params[:id])
+				if aluno.update(aluno_params)
+					render json: {status: 'SUCCESS', message:'Aluno Atualizado!', data:aluno},status: :ok
+        else
+					render json: {status: 'ERROR', message:'Aluno não Atualizado!', data:aluno.errors}, status: :unprocessable_entity
+				end
+			end
 
       # Parametros aceitos
       private

@@ -6,7 +6,9 @@ class Matricula < ApplicationRecord
   validates :quantidade_faturas, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :dia_venc_fatura, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 31 }
   validates :nome_curso, presence: true
+  
   after_create :criar_faturas
+  after_update :atualizar_faturas
 
   private
 
@@ -31,5 +33,10 @@ class Matricula < ApplicationRecord
       qtd += 1
       Fatura.create!(valor_fatura: valor_fatura, data_vencimento: data_fatura_venc, matricula_id: id, status: 'Aberta')
     end
+  end
+
+  def atualizar_faturas
+    faturas.map(&:destroy) # destroi as faturas antigas
+    criar_faturas # chama o metodo para criação de novas faturas
   end
 end
