@@ -4,5 +4,5 @@ class Aluno < ApplicationRecord
   validates :cpf, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 11 }
   validates :telefone, numericality: { only_integer: true }
   validates :genero, presence: true, inclusion: { in: %w[M F] }
-  validates :meio_pagamento, presence: true, inclusion: { in: %w[Boleto Cartao boleto cartao cartão Cartão] }
+  validates :meio_pagamento, presence: true, inclusion: { in: %w[Boleto Cartão] }
 end
